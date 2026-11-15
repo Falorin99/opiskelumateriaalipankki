@@ -1,3 +1,10 @@
 # opiskelumateriaalipankki
 
-StudyHub on opiskelumateriaalien jakamissovellus. Käyttäjät voivat rekisteröityä, kirjautua sisään sekä lisätä, muokata ja poistaa omia materiaalejaan. Materiaaleja voi selata ja hakea sekä luokitella aiheen ja tyypin mukaan. Käyttäjäprofiili näyttää omat materiaalit ja tilastot. Materiaaleihin voi lisätä kommentteja.
+StudyHub on opiskelumateriaalien jakamissovellus.
+
+- Käyttäjä voi rekisteröityä ja kirjautua.
+- Käyttäjä voi lisätä, muokata ja poistaa materiaalejaan.
+- Käyttäjät voivat selata ja hakea materiaaleja.
+- Materiaaleilla on aihe- ja tyyppiluokitus.
+- Profiili näyttää omat materiaalit ja tilastot.
+- Materiaaleja voi kommentoida.
