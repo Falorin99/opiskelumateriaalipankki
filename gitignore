@@ -1,0 +1,16 @@
+# Local environment
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Local SQLite databases
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+
+# Secrets and environment settings
+.env
+.env.*
+.DS_Store
