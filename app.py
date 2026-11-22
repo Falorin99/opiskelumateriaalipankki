@@ -1,4 +1,4 @@
-"""The app uses separate HTML, CSS and SQL modules."""
+"""StudyHub Flask routes. The app uses separate HTML, CSS and SQL modules."""
 import re
 import secrets
 import sqlite3
