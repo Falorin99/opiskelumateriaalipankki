@@ -13,9 +13,7 @@ jakamissovellus.
 - Käyttäjäsivut näyttävät käyttäjän materiaalit ja tilastot (suunnitteilla).
 - Käyttäjä voi kommentoida materiaaleja (suunnitteilla).
 
-## Nykyinen toteutus – välipalautus 2
-
-Valmiit toiminnot:
+NYKYISET toiminnot:
 - rekisteröityminen, kirjautuminen ja uloskirjautuminen
 - materiaalien luominen, muokkaaminen ja poistaminen (vain omat materiaalit)
 - kaikkien materiaalien selaaminen ja yksittäisen materiaalin avaaminen
