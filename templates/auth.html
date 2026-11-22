@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="panel wide">
+  <h1>{{ title }}</h1>
+  <form method="post" action="{{ url_for(action) }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <div class="field">
+      <label for="username">Käyttäjätunnus</label>
+      <input id="username" name="username" minlength="3" maxlength="24" required
+             autocomplete="username" value="{{ username }}">
+    </div>
+    <div class="field">
+      <label for="password">Salasana</label>
+      <input id="password" type="password" name="password" minlength="8" maxlength="128"
+             required autocomplete="{{ 'new-password' if action == 'register' else 'current-password' }}">
+      {% if action == 'register' %}<small class="muted">Vähintään 8 merkkiä.</small>{% endif %}
+    </div>
+    <button class="button" type="submit">{{ title }}</button>
+  </form>
+  {% if action == 'register' %}
+    <p>Onko sinulla jo tunnus? <a href="{{ url_for('login') }}">Kirjaudu sisään</a>.</p>
+  {% else %}
+    <p>Eikö sinulla ole tunnusta? <a href="{{ url_for('register') }}">Rekisteröidy</a>.</p>
+  {% endif %}
+</div>
+{% endblock %}

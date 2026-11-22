@@ -1,0 +1,12 @@
+<article class="card">
+  <h3><a href="{{ url_for('material_detail', material_id=material['id']) }}">{{ material['title'] }}</a></h3>
+  <p class="muted">{{ material['description'] | truncate(150) }}</p>
+  <div>
+    <span class="tag">{{ material['subject_name'] }}</span>
+    <span class="tag">{{ material['type_name'] }}</span>
+  </div>
+  <small class="muted">Lisännyt
+    {{ material['username'] }}
+    · {{ material['created_at'] }}
+  </small>
+</article>

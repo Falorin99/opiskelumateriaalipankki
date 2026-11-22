@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="panel wide">
+  <h1>{{ title }}</h1>
+  {% if errors %}
+    <div class="flash error" role="alert">
+      <strong>Tarkista lomake:</strong>
+      <ul>{% for error in errors %}<li>{{ error }}</li>{% endfor %}</ul>
+    </div>
+  {% endif %}
+  <form method="post" action="{{ action }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <div class="field">
+      <label for="title">Materiaalin nimi</label>
+      <input id="title" name="title" required minlength="3" maxlength="120" value="{{ form['title'] }}">
+    </div>
+    <div class="field">
+      <label for="description">Kuvaus</label>
+      <textarea id="description" name="description" required minlength="10" maxlength="2000">{{ form['description'] }}</textarea>
+    </div>
+    <div class="field">
+      <label for="url">Materiaalin linkki (https://...)</label>
+      <input id="url" type="url" name="url" required maxlength="500" value="{{ form['url'] }}">
+    </div>
+    <div class="field">
+      <label for="subject_id">Aihealue</label>
+      <select id="subject_id" name="subject_id" required>
+        <option value="">Valitse aihealue</option>
+        {% for s in subjects %}
+          <option value="{{ s['id'] }}" {% if form['subject_id']|string == s['id']|string %}selected{% endif %}>{{ s['name'] }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="field">
+      <label for="type_id">Materiaalin tyyppi</label>
+      <select id="type_id" name="type_id" required>
+        <option value="">Valitse tyyppi</option>
+        {% for t in types %}
+          <option value="{{ t['id'] }}" {% if form['type_id']|string == t['id']|string %}selected{% endif %}>{{ t['name'] }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="actions">
+      <button class="button" type="submit">Tallenna</button>
+      <a href="{{ url_for('index') }}">Peruuta</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

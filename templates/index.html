@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="hero">
+  <h1>Opiskelumateriaalit</h1>
+  <p class="muted">Tutustu muiden opiskelijoiden jakamiin oppaisiin, kirjoihin ja videoihin.</p>
+  {% if g.user %}<p><a class="button" href="{{ url_for('new_material') }}">+ Lisää materiaali</a></p>{% endif %}
+</div>
+<form method="get" action="{{ url_for('index') }}" class="filters">
+  <div class="field">
+    <label for="q">Hae materiaaleja</label>
+    <input id="q" name="q" maxlength="100" value="{{ search_term }}"
+           placeholder="Esim. Python tai algoritmit">
+  </div>
+  <button class="button" type="submit">Hae</button>
+  {% if search_term %}<a href="{{ url_for('index') }}">Tyhjennä haku</a>{% endif %}
+</form>
+{% if search_term %}
+  <p class="muted">Hakutulokset haulle: <strong>{{ search_term }}</strong></p>
+{% endif %}
+{% if materials %}
+  <div class="grid">
+    {% for material in materials %}{% include '_material_card.html' %}{% endfor %}
+  </div>
+{% else %}
+  <div class="panel">
+    <p>{% if search_term %}Hakua vastaavia materiaaleja ei löytynyt.{% else %}Materiaaleja ei ole vielä lisätty.{% endif %}</p>
+  </div>
+{% endif %}
+{% endblock %}

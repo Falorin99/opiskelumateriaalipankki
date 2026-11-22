@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="panel wide">
+  <h1>Poista materiaali</h1>
+  <p>Haluatko varmasti poistaa materiaalin <strong>{{ material['title'] }}</strong>?</p>
+  <p class="muted">Poistamista ei voi peruuttaa.</p>
+  <div class="actions">
+    <form method="post" action="{{ url_for('delete_material', material_id=material['id']) }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <button class="button danger" type="submit">Poista pysyvästi</button>
+    </form>
+    <a href="{{ url_for('material_detail', material_id=material['id']) }}">Peruuta</a>
+  </div>
+</div>
+{% endblock %}

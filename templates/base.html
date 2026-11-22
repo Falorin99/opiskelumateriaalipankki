@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }} · StudyHub</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <nav class="nav" aria-label="Päänavigaatio">
+    <a class="brand" href="{{ url_for('index') }}">📘 StudyHub</a>
+    <a href="{{ url_for('index') }}">Materiaalit</a>
+    {% if g.user %}
+      <a href="{{ url_for('new_material') }}">Lisää materiaali</a>
+      <span>{{ g.user['username'] }}</span>
+      <form class="logout-form" method="post" action="{{ url_for('logout') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <button class="nav-button" type="submit">Kirjaudu ulos</button>
+      </form>
+    {% else %}
+      <a href="{{ url_for('login') }}">Kirjaudu</a>
+      <a href="{{ url_for('register') }}">Rekisteröidy</a>
+    {% endif %}
+  </nav>
+</header>
+<main>
+  {% with flashes = get_flashed_messages(with_categories=true) %}
+    {% for category, message in flashes %}
+      <div class="flash {{ 'error' if category == 'error' else '' }}" role="status">{{ message }}</div>
+    {% endfor %}
+  {% endwith %}
+  {% block content %}{% endblock %}
+</main>
+<footer class="footer">StudyHub · Tietokannat ja web-ohjelmointi · Flask + SQLite</footer>
+</body>
+</html>
